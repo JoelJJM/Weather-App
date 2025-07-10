@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./App.css";
-// import LocationSearch from "./components/locationSearch/locationSearch";
+import LocationSearch from "./components/locationSearch/locationSearch";
 
 function App() {
   // Keeping track of the scroll reference through an array of references
@@ -52,7 +52,7 @@ function App() {
     <div className="page-container" onWheel={(e) => handleScroll(e)}>
       <div className="page-section">
         <button value="up" className="scroll-button-up" onClick={handleClick}>
-          <p className="">^</p>
+          <p className="chevron-up">^</p>
         </button>
 
         <div className="page-section" ref={scrollRefs[0]}>
@@ -70,7 +70,7 @@ function App() {
       </div>
 
       <div className="page-section" ref={scrollRefs[1]}>
-        <input placeholder="This is a test input" />
+        <LocationSearch />
       </div>
 
       <div className="page-section" ref={scrollRefs[2]}>
