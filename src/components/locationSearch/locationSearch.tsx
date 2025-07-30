@@ -1,18 +1,37 @@
-import { useEffect, useState } from "react";
-import "./locationSearch.module.css";
+import { useState } from "react";
+import { locationDataFetch } from "./locationSearchLib";
+import "./locationSearch.css";
 
-function LocationSearch() {
-  const [location, setLocation] = useState("london");
+function LocationSearch({ sendWeatherDataToParent }: any) {
+  const [location, setLocation] = useState("London");
 
-  useEffect(() => {
-    fetch(
-      "https://api.geocode.earth/v1/search?" +
-        `api_key=${import.meta.env.REACT_APP_API_KEY}&` +
-        "text=London"
-    );
-  }, [location]);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocation(e.target.value);
+  };
 
-  return <div></div>;
+  const handleSearch = async () => {
+    try {
+      const result = await locationDataFetch(location);
+      sendWeatherDataToParent(result);
+    } catch (error) {
+      console.error("Error fetching location data:", error);
+    }
+  };
+
+  return (
+    <div className="locationSearchContainer">
+      <input
+        type="text"
+        placeholder="Enter a location..."
+        value={location}
+        onChange={handleInputChange}
+        className="locationInput"
+      />
+      <button onClick={handleSearch} className="locationButton">
+        Search
+      </button>
+    </div>
+  );
 }
 
 export default LocationSearch;

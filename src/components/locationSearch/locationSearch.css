@@ -1,0 +1,90 @@
+.locationDisplayContainer {
+  margin-top: 2.5rem;
+  padding: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 850px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  font-family: inherit;
+  color: #003366;
+}
+
+.locationTitle {
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #002244;
+}
+
+.weatherGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+}
+
+.weatherItem {
+  background-color: #ffffffee;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.weatherItem:hover {
+  transform: scale(1.03);
+  background-color: #f0f8ff;
+}
+
+/* Search container styles */
+.locationSearchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 850px;
+}
+
+.locationInput {
+  width: 100%;
+  font-size: clamp(1.1rem, 1.5vw, 1.6rem);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #333;
+  font-family: inherit;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.locationInput:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+}
+
+.locationButton {
+  font-size: clamp(1.2rem, 1.6vw, 1.7rem);
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #ffffffdd;
+  color: #004080;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.locationButton:hover {
+  background-color: #dbefff;
+  transform: scale(1.05);
+}

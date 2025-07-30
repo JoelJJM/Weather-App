@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import "./App.css";
 import LocationSearch from "./components/locationSearch/locationSearch";
+import LocationDisplay from "./components/locationDisplay/locationDisplay";
 
 function App() {
   // Keeping track of the scroll reference through an array of references
@@ -12,6 +13,13 @@ function App() {
 
   // Tracking current section using useState to determine current output
   const [currentSection, setCurrentSection] = useState(0);
+  // State to hold weather data fetched from the child component
+  const [weatherData, setWeatherData] = useState(null);
+
+  // Function to handle data received from the LocationSearch component
+  const handleWeatherDataFromChild = (data: any) => {
+    setWeatherData(data);
+  };
 
   // Function to scroll to a section by index
   const scrollFunctionality = (sectionIndex: number) => {
@@ -51,30 +59,34 @@ function App() {
   return (
     <div className="page-container" onWheel={(e) => handleScroll(e)}>
       <div className="page-section">
-        <button value="up" className="scroll-button-up" onClick={handleClick}>
-          <p className="chevron-up">^</p>
-        </button>
+        {currentSection > 0 ? (
+          <button value="up" className="scroll-button-up" onClick={handleClick}>
+            <p className="chevron-up">^</p>
+          </button>
+        ) : null}
 
         <div className="page-section" ref={scrollRefs[0]}>
           <h1>Weather Application</h1>
           <h2>Search for a location to get the current weather.</h2>
         </div>
 
-        <button
-          value="down"
-          className="scroll-button-down"
-          onClick={handleClick}
-        >
-          <p className="chevron-down">^</p>
-        </button>
+        {currentSection < scrollRefs.length - 1 ? (
+          <button
+            value="down"
+            className="scroll-button-down"
+            onClick={handleClick}
+          >
+            <p className="chevron-down">^</p>
+          </button>
+        ) : null}
       </div>
 
       <div className="page-section" ref={scrollRefs[1]}>
-        <LocationSearch />
+        <LocationSearch sendWeatherDataToParent={handleWeatherDataFromChild} />
       </div>
 
       <div className="page-section" ref={scrollRefs[2]}>
-        <h1>This is a placeholder text!</h1>
+        <LocationDisplay locationData={weatherData} />
       </div>
     </div>
   );

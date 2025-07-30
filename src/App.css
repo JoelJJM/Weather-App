@@ -81,7 +81,9 @@ h2 {
 .chevron-down {
   color: white;
   transform: rotate(180deg);
+  font-size: 50px;
 }
 .chevron-up {
   color: white;
+  font-size: 50px;
 }
