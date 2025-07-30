@@ -1,3 +1,7 @@
+This application was built using the openweather api and their inbuild coordinate converter.
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
